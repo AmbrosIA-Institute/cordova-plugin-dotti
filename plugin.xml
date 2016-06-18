@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="institute.ambrosia.dottiplugin"
+    version="0.0.2">
+    <name>DottiPlugin</name>
+    <description>A Dotti plugin</description>
+    <license>GPL 3</license>
+    <keywords>cordova, dotti</keywords>
+    <repo></repo>
+    <issue></issue>
+    <js-module src="www/DottiPlugin.js" name="DottiPlugin">
+        <clobbers target="DottiPlugin" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="DottiPlugin" >
+                <param name="android-package" value="institute.ambrosia.plugins.DottiPlugin"/>
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.BLUETOOTH"/>
+            <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+        </config-file>
+
+        <framework src="src/android/build-extras.gradle" custom="true" type="gradleReference" />
+
+        <source-file src="src/android/DottiPlugin.java" target-dir="src/institute/ambrosia/plugins" />
+    </platform>
+
+</plugin>
+
